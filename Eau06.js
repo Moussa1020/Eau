@@ -1,5 +1,5 @@
 function getArgument() {
-    const argument = process.argv.slice(2)
+    const argument = process.argv[2]
     return argument
 }
 
@@ -7,6 +7,15 @@ function isString(parametre) {
     if (isNaN(parametre)) {
         return true
     } else{
+        return false
+    }
+}
+
+function checkArgumentLength(nombreArgument) {
+    const argument = process.argv.slice(2).length
+    if (argument === nombreArgument) {
+        return true
+    } else {
         return false
     }
 }
@@ -48,4 +57,14 @@ function capitalLetterOnTwo(argument) {
         
 }
 
-console.log(capitalLetterOnTwo("Hello world"))
+
+function resolution() {
+    if (!checkArgumentLength(1)) {
+        console.log("Error, Veuillez entre 1 seul argument svp")
+    } else if (!isString(getArgument())) {
+        console.log("Error, Veuillez n'est pas entrer de chiffre svp")
+    } else {
+        console.log(capitalLetterOnTwo(getArgument()))
+    }
+}
+resolution()
